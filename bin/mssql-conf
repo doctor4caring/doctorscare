@@ -1,0 +1,10 @@
+#!/bin/bash
+# Don't generate .pyc files
+export PYTHONDONTWRITEBYTECODE=1
+
+CMD="exec $(dirname $0)/../lib/mssql-conf/mssql-conf.py $@"
+
+# Handle all permissions checks and file creations internally
+# This allows for all error messages to be localized
+/bin/bash -c "$CMD"
+exit $?
